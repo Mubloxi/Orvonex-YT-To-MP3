@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orvonex Music - MP3 Converter</title>
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <div class="app">
+
+    <header class="header">
+      <div class="logo">
+        <div class="logo-icon">
+          <img src="/images/logo.png" alt="Orvonex Logo" />
+        </div>
+        <div class="logo-text-group">
+          <div class="logo-row-top">
+            <span class="logo-text">Orvonex Music</span>
+            <span class="logo-badge">MP3</span>
+          </div>
+          <p class="tagline">YouTube & Spotify links → instant MP3</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="card input-card">
+      <div class="card-label">
+        <i class="fa-solid fa-link"></i> Paste URL
+      </div>
+      <div class="url-row">
+        <div class="url-input-wrap">
+          <i class="fa-brands fa-youtube url-icon yt"></i>
+          <i class="fa-brands fa-spotify url-icon sp"></i>
+          <input
+            type="url"
+            id="urlInput"
+            placeholder="https://youtube.com/watch?v=... or playlist"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="clear-btn" id="clearBtn" title="Clear">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <button class="fetch-btn" id="fetchBtn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <span>Fetch</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card track-card hidden" id="trackCard">
+      <div class="card-label">
+        <i class="fa-solid fa-list-music"></i>
+        <span id="trackListLabel">Tracks</span>
+        <span class="track-count" id="trackCount"></span>
+      </div>
+      <div class="track-list" id="trackList"></div>
+      <div class="track-actions">
+        <button class="btn-secondary" id="selectAllBtn">
+          <i class="fa-solid fa-check-double"></i> Select all
+        </button>
+        <button class="btn-secondary" id="deselectAllBtn">
+          <i class="fa-solid fa-xmark"></i> Deselect all
+        </button>
+      </div>
+    </section>
+
+    <section class="card settings-card" id="settingsCard">
+      <div class="card-label">
+        <i class="fa-solid fa-sliders"></i> Audio Settings
+      </div>
+
+      <div class="settings-grid">
+
+        <div class="setting-group">
+          <label class="setting-label">
+            Bitrate
+            <span class="setting-value" id="qualityVal">192 kbps</span>
+          </label>
+          <div class="slider-track">
+            <input type="range" id="qualitySlider" min="0" max="3" step="1" value="1" class="slider" />
+            <div class="slider-ticks">
+              <span>128</span>
+              <span>192</span>
+              <span>256</span>
+              <span>320</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">
+            Playback Speed
+            <span class="setting-value" id="speedVal">1.0×</span>
+          </label>
+          <div class="slider-track">
+            <input type="range" id="speedSlider" min="50" max="200" step="5" value="100" class="slider" />
+            <div class="slider-ticks">
+              <span>0.5×</span>
+              <span>1.0×</span>
+              <span>1.5×</span>
+              <span>2.0×</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-label">
+            Pitch Shift
+            <span class="setting-value" id="pitchVal">0 st</span>
+          </label>
+          <div class="slider-track">
+            <input type="range" id="pitchSlider" min="-12" max="12" step="1" value="0" class="slider" />
+            <div class="slider-ticks">
+              <span>-12</span>
+              <span>-6</span>
+              <span>0</span>
+              <span>+6</span>
+              <span>+12</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group toggle-group">
+          <label class="setting-label">
+            <span>Normalize Volume</span>
+            <span class="setting-sub">EBU R128 loudnorm</span>
+          </label>
+          <button class="toggle" id="normalizeToggle" aria-pressed="false">
+            <span class="toggle-knob"></span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="convert-row">
+      <button class="convert-btn" id="convertBtn" disabled>
+        <i class="fa-solid fa-waveform-lines"></i>
+        <span>Convert to MP3</span>
+      </button>
+    </div>
+
+    <section class="jobs-section hidden" id="jobsSection">
+      <div class="card-label">
+        <i class="fa-solid fa-arrow-down-to-line"></i> Downloads
+      </div>
+      <div class="jobs-list" id="jobsList"></div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
