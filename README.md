@@ -1,4 +1,4 @@
-# Wavr — YouTube & Spotify to MP3
+# Orvonex — YouTube & Spotify to MP3
 
 A fast, customizable audio converter for downloading and processing music from YouTube and Spotify links. Choose your audio quality, adjust playback, modify pitch, normalize volume, and manage multiple tracks from a real-time queue.
 
